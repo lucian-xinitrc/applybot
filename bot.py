@@ -40,7 +40,8 @@ async def watcher():
 	    channel = bot.get_channel(1469673733580128431)
 	    if channel:
 	        embed = disnake.Embed(title="Application", color=disnake.Colour.blue())
-			await channel.send(embed=embed)
+	    	await channel.send(embed=embed)
+
 watcher.start()
 
 @bot.event
