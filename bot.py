@@ -25,7 +25,7 @@ async def watcher():
 	conn = psycopg2.connect(db)
 	cur = conn.cursor()
 
-	cur.execute("SELECT id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth FROM public.last_message ORDER BY id DESC LIMIT 1")
+	cur.execute("SELECT id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth FROM public.applysubmissions ORDER BY id DESC LIMIT 1")
 	row = cur.fetchone()
 
 	cur.close()
