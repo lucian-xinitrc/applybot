@@ -14,14 +14,15 @@ bot = commands.Bot(
 class ResponseApplyEmbed(disnake.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
+        self.username = username
 
     @disnake.ui.button(label="Accept", style=disnake.ButtonStyle.success, custom_id="accept_btn")
     async def button_accept_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
-        await interaction.response.send_message("Player Accepted!", ephemeral=True)
+        await interaction.response.send_message(f"<@{self.username}> You've been accepted!", ephemeral=True)
 
     @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
     async def button_deny_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
-        await interaction.response.send_message("Player Denied!", ephemeral=True)
+        await interaction.response.send_message("<@{self.username}> You've been denied!", ephemeral=True)
 
 
 last_cache = None
@@ -67,7 +68,7 @@ async def watcher():
 	        embed.add_field(name="Tell us a little bit about yourself. (for example: hobbies, work, pets etc.)", value=decrypt(nineth), inline=False)
 	        embed.add_field(name="What was rule number 5 in our server rules section?", value=decrypt(tenth), inline=False)
 
-	        await channel.send(embed=embed, view=ResponseApplyEmbed())
+	        await channel.send(embed=embed, view=ResponseApplyEmbed(decrypt(username)))
 
 watcher.start()
 
