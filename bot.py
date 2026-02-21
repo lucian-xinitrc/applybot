@@ -16,11 +16,16 @@ class ResponseApplyEmbed(disnake.ui.View):
         super().__init__(timeout=None)
         self.username = username
 
+
     @disnake.ui.button(label="Accept", style=disnake.ButtonStyle.success, custom_id="accept_btn")
     async def button_accept_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
-        member = disnake.utils.find(lambda m: m.name == username or m.display_name == username,interaction.guild.members)
-
-        await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
+        member = disnake.utils.find(lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
+        role = interaction.guild.get_role(1473025835404624016)
+        if member:
+        	await member.add_roles(role)
+			await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
+		else:
+			await interaction.response.send_message("{self.username} is not on server, or he put wrong username", ephemeral=True)
     @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
     async def button_deny_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
     	member = disnake.utils.find( lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
