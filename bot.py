@@ -67,8 +67,8 @@ async def watcher():
 	        embed.add_field(name="What does a 'healthy community' mean to you?", value=decrypt(eighth), inline=False)
 	        embed.add_field(name="Tell us a little bit about yourself. (for example: hobbies, work, pets etc.)", value=decrypt(nineth), inline=False)
 	        embed.add_field(name="What was rule number 5 in our server rules section?", value=decrypt(tenth), inline=False)
-
-	        await channel.send(embed=embed, view=ResponseApplyEmbed(decrypt(username)))
+	        usernamedec = decrypt(username)
+	        await channel.send(embed=embed, view=ResponseApplyEmbed(usernamedec))
 
 watcher.start()
 
