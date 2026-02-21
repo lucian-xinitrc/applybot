@@ -36,7 +36,7 @@ async def watcher():
 	if row != last_cache:
 	    last_cache = row
 
-	    (max_id, username, first, second, third, fifth, sixth, seventh, eighth, nineth, tenth) = row
+	    (max_id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth) = row
 	    channel = bot.get_channel(1469673733580128431)
 	    decryptedMsg = decrypt(msg)
 	    check = True
