@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            cd /home/lucian/messagecrawlerbot
+            cd /home/lucian/applybot
             git pull
             sudo docker stop apply-bot
             sudo docker rm apply-bot
