@@ -42,6 +42,12 @@ async def watcher():
 	    if channel:
 	        embed = disnake.Embed(title="Application", color=disnake.Colour.blue())
 	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        embed.add_field(name="username", value=decrypt(username), inline=False)
+	        
 	        await channel.send(embed=embed)
 
 watcher.start()
