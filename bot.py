@@ -11,6 +11,15 @@ bot = commands.Bot(
 	allowed_mentions=disnake.AllowedMentions(everyone=True)
 )
 
+class ResponseApplyEmbed(disnake.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @disnake.ui.button(label="Apply button", style=disnake.ButtonStyle.primary, custom_id="apply_btn")
+    async def button_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
+        await interaction.response.send_message("Player Accepted", ephemeral=True)
+
+
 last_cache = None
 
 def decrypt(ciphertext_b64):
@@ -50,11 +59,11 @@ async def watcher():
 
 	        embed.add_field(name="Are you okay with a 2-day trial period before becoming a full member?", value=decrypt(sixth), inline=False)
 	        embed.add_field(name="What are your main interests if you do join the server and what would you bring to our community?", value=decrypt(seventh), inline=False)
-	        embed.add_field(name="What does a 'healthy community' mean to you?", value=decrypt(eighth), inline=False)
+	        embed.add_field(name="What does a 'healthy community' mean to you?", value=decrypt(ei qaSWDEAZAghth), inline=False)
 	        embed.add_field(name="Tell us a little bit about yourself. (for example: hobbies, work, pets etc.)", value=decrypt(nineth), inline=False)
 	        embed.add_field(name="What was rule number 5 in our server rules section?", value=decrypt(tenth), inline=False)
 
-	        await channel.send(embed=embed)
+	        await channel.send(embed=embed, view=ResponseApplyEmbed())
 
 watcher.start()
 
