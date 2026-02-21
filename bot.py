@@ -35,7 +35,6 @@ class ResponseApplyEmbed(disnake.ui.View):
 		)
 		if member:
         	await interaction.response.send_message("{member.mention} You've been denied!", ephemeral=True)
-
         else:
         	await interaction.response.send_message(f"{self.username} couldn't be found!", ephemeral=True)
         
