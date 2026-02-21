@@ -21,11 +21,21 @@ class ResponseApplyEmbed(disnake.ui.View):
     async def button_accept_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
         member = disnake.utils.find(lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
         role = interaction.guild.get_role(1473025835404624016)
+
+        message = ""
         if member:
 
         	await member.add_roles(role)
 
-        	await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
+        	try:
+
+        		await member.send("Your application was accepted!")
+
+        	except disnake.Forbidden:
+
+        		message="His dms are locked!"
+
+        	await interaction.response.send_message(f"{member.mention} You've been accepted {message}", ephemeral=True)
 
         else:
 
@@ -33,9 +43,21 @@ class ResponseApplyEmbed(disnake.ui.View):
     @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
     async def button_deny_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
     	member = disnake.utils.find( lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
+    	message = ""
+    	if member:
+    		try:
 
-    	await interaction.response.send_message(f"{member.mention} You've been denied!", ephemeral=True)
-        
+    			await member.send("You")
+
+    		except disnake.Forbidden:
+
+    			message = "His dms are locked!"
+    		await member.kick(reason="Application denied")
+
+    		await interaction.response.send_message(f"{member.mention} Has been denied! {message}", ephemeral=True)
+        else:
+
+        	await interaction.response.send_message(f"{self.username} could not be found!", ephemeral=True)
 
 
 last_cache = None
