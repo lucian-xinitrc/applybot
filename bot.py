@@ -38,23 +38,17 @@ async def watcher():
 
 	    (max_id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth) = row
 	    channel = bot.get_channel(1469673733580128431)
-	    decryptedMsg = decrypt(msg)
 	    check = True
 	    if channel:
-	        for word in ["login", "register", "msg", "/give"]:
-	        	if word in decryptedMsg:
-	        		check = False
-	        		break
-	        	if check:
-	        		embed = disnake.Embed(
-				        title="Application",
-				        url="https://adarealm.gethonis.com",
-				        color=disnake.Colour.blue(),
-				        timestamp=datetime.datetime.now(),
-				    )
-
-					
-		        	await channel.send(embed=embed)
+	        if check:
+	        	embed = disnake.Embed(
+				    title="Application",
+				    url="https://adarealm.gethonis.com",
+				    color=disnake.Colour.blue(),
+				    timestamp=datetime.datetime.now(),
+				)
+	
+		        await channel.send(embed=embed)
 
 watcher.start()
 
