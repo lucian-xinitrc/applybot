@@ -46,7 +46,7 @@ async def watcher():
 	        		check = False
 	        		break
 	        	if check:
-				    embed = disnake.Embed(
+	        		embed = disnake.Embed(
 				        title="Application",
 				        url="https://adarealm.gethonis.com",
 				        color=disnake.Colour.blue(),
