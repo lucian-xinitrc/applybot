@@ -12,7 +12,7 @@ bot = commands.Bot(
 )
 
 class ResponseApplyEmbed(disnake.ui.View):
-    def __init__(self):
+    def __init__(self, username: str):
         super().__init__(timeout=None)
         self.username = username
 
