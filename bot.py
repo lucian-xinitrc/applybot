@@ -15,7 +15,11 @@ class ResponseApplyEmbed(disnake.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @disnake.ui.button(label="Apply button", style=disnake.ButtonStyle.primary, custom_id="apply_btn")
+    @disnake.ui.button(label="Accept", style=disnake.ButtonStyle.success, custom_id="accept_btn")
+    async def button_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
+        await interaction.response.send_message("Player Accepted", ephemeral=True)
+
+    @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
     async def button_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
         await interaction.response.send_message("Player Accepted", ephemeral=True)
 
