@@ -22,8 +22,10 @@ class ResponseApplyEmbed(disnake.ui.View):
         member = disnake.utils.find(lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
         role = interaction.guild.get_role(1473025835404624016)
         if member:
+
         	await member.add_roles(role)
-			await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
+
+        	await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
 		else:
 			await interaction.response.send_message("{self.username} is not on server, or he put wrong username", ephemeral=True)
     @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
