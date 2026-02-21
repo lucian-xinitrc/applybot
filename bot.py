@@ -25,7 +25,7 @@ async def watcher():
 	conn = psycopg2.connect(db)
 	cur = conn.cursor()
 
-	cur.execute("SELECT id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth FROM public.applysubmissions ORDER BY id DESC LIMIT 1")
+	cur.execute("SELECT id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth FROM public.last_message ORDER BY id DESC LIMIT 1")
 	row = cur.fetchone()
 
 	cur.close()
@@ -40,15 +40,24 @@ async def watcher():
 	    channel = bot.get_channel(1469673733580128431)
 	    check = True
 	    if channel:
-	        if check:
-	        	embed = disnake.Embed(
-				    title="Application",
-				    url="https://adarealm.gethonis.com",
-				    color=disnake.Colour.blue(),
-				    timestamp=datetime.datetime.now(),
-				)
-	
-		        await channel.send(embed=embed)
+	        embed = disnake.Embed(
+				title="Application",
+				color=disnake.Colour.blue(),
+			)
+
+			embed.add_field(name="Username", value=decrypt(username), inline=False)
+			embed.add_field(name="What is your Minecraft username?", value=decrypt(first), inline=False)
+			embed.add_field(name="What Mineraft do you use?", value=decrypt(second), inline=False)
+			embed.add_field(name="How old are you?", value=decrypt(third), inline=False)
+			embed.add_field(name="What is your timezone?", value=decrypt(fourth), inline=False)
+			embed.add_field(name="Why do you want to join our community?", value=decrypt(fifth), inline=False)
+			embed.add_field(name="Are you okay with a 2-day trial period before becoming a full member?", value=decrypt(sixth), inline=False)
+			embed.add_field(name="What are your main interests if you do join the server and what would you bring to our community?", value=decrypt(seventh), inline=False)
+			embed.add_field(name="What does a 'healthy community' mean to you?", value=decrypt(eighth), inline=False)
+			embed.add_field(name="Tell us a little bit about yourself. (for example: hobbies, work, pets etc.)", value=decrypt(nineth), inline=False)
+			embed.add_field(name="What was rule number 5 in our server rules section?", value=decrypt(tenth), inline=False)
+		        	
+		    await channel.send(embed=embed)
 
 watcher.start()
 
