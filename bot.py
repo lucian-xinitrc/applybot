@@ -29,7 +29,11 @@ class ResponseApplyEmbed(disnake.ui.View):
 
         	try:
 
-        		await member.send("Your application was accepted!")
+        		embed = disnake.Embed(title="Application Status", color=disnake.Colour.blue())
+
+        		embed.add_field(name=f"{member.name}, your application was accepted", value="", inline=False)
+
+        		await member.send(embed=embed)
 
         	except disnake.Forbidden:
 
@@ -47,7 +51,11 @@ class ResponseApplyEmbed(disnake.ui.View):
     	if member:
     		try:
 
-    			await member.send("You")
+    			embed = disnake.Embed(title="Application Status", color=disnake.Colour.blue())
+
+    			embed.add_field(name=f"{member.name}, your application was denied", value="", inline=False)
+
+    			await member.send(embed=embed)
 
     		except disnake.Forbidden:
 
