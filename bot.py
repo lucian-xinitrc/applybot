@@ -38,12 +38,8 @@ async def watcher():
 
 	    (max_id, username, first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth) = row
 	    channel = bot.get_channel(1469673733580128431)
-	    check = True
 	    if channel:
-	        embed = disnake.Embed(
-				title="Application",
-				color=disnake.Colour.blue(),
-			)
+	        embed = disnake.Embed(title="Application", color=disnake.Colour.blue())
 			await channel.send(embed=embed)
 watcher.start()
 
