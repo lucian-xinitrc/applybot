@@ -52,7 +52,6 @@ async def watcher():
 				        color=disnake.Colour.blue(),
 				        timestamp=datetime.datetime.now(),
 				    )
-
 				    embed.add_field(name="Username", value=decrypt(username), inline=False)
 				    embed.add_field(name="What is your Minecraft username?", value=decrypt(first), inline=False)
 				    embed.add_field(name="What Mineraft do you use?", value=decrypt(second), inline=False)
