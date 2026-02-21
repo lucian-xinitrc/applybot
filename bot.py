@@ -18,9 +18,7 @@ class ResponseApplyEmbed(disnake.ui.View):
 
     @disnake.ui.button(label="Accept", style=disnake.ButtonStyle.success, custom_id="accept_btn")
     async def button_accept_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
-        member = disnake.utils.find(
-			lambda m: m.name == username or m.display_name == username,
-			interaction.guild.members
+        member = disnake.utils.find( lambda m: m.name == username or m.display_name == username,interaction.guild.members
 		)
 		if member:
 			await interaction.response.send_message(f"{member.mention} You've been accepted!", ephemeral=True)
