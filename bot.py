@@ -23,14 +23,9 @@ class ResponseApplyEmbed(disnake.ui.View):
         await interaction.response.send_message(f"{member.mention} You've been accepted", ephemeral=True)
     @disnake.ui.button(label="Deny", style=disnake.ButtonStyle.danger, custom_id="deny_btn")
     async def button_deny_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
-    	member = disnake.utils.find(
-			lambda m: m.name == self.username or m.display_name == self.username,
-			interaction.guild.members
-		)
-		if member:
-        	await interaction.response.send_message("{member.mention} You've been denied!", ephemeral=True)
-        else:
-        	await interaction.response.send_message(f"{self.username} couldn't be found!", ephemeral=True)
+    	member = disnake.utils.find( lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
+
+    	await interaction.response.send_message(f"{member.mention} You've been denied!", ephemeral=True)
         
 
 
