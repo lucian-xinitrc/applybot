@@ -29,9 +29,9 @@ class ResponseApplyEmbed(disnake.ui.View):
 
         	try:
 
-        		embed = disnake.Embed(title="te iubesccc", color=disnake.Colour.blue())
+        		embed = disnake.Embed(title="Application status", color=disnake.Colour.blue())
 
-        		embed.add_field(name=f"{member.name}, te iubescccc", value="", inline=False)
+        		embed.add_field(name=f"{member.name}, you've been accepted!", value="", inline=False)
 
         		await member.send(embed=embed)
 
