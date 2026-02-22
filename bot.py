@@ -29,9 +29,9 @@ class ResponseApplyEmbed(disnake.ui.View):
 
         	try:
 
-        		embed = disnake.Embed(title="Iubi hai sa vorbim", color=disnake.Colour.blue())
+        		embed = disnake.Embed(title="te iubesccc", color=disnake.Colour.blue())
 
-        		embed.add_field(name=f"{member.name}, Iubi hai sa vorbim", value="", inline=False)
+        		embed.add_field(name=f"{member.name}, te iubescccc", value="", inline=False)
 
         		await member.send(embed=embed)
 
