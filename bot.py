@@ -20,7 +20,7 @@ class ResponseApplyEmbed(disnake.ui.View):
     @disnake.ui.button(label="Accept", style=disnake.ButtonStyle.success, custom_id="accept_btn")
     async def button_accept_callback(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
         member = disnake.utils.find(lambda m: m.name == self.username or m.display_name == self.username, interaction.guild.members)
-        role = interaction.guild.get_role(1473025835404624016)
+        role = interaction.guild.get_role(1475223546933547168)
 
         message = ""
         if member:
