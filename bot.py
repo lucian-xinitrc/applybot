@@ -29,7 +29,7 @@ class ResponseApplyEmbed(disnake.ui.View):
 
         	try:
 
-        		embed = disnake.Embed(title="Application status", color=disnake.Colour.blue())
+        		embed = disnake.Embed(title="Application status - Ada SMP -", color=disnake.Colour.blue())
 
         		embed.add_field(name=f"{member.name}, you've been accepted!", value="", inline=False)
 
@@ -51,7 +51,7 @@ class ResponseApplyEmbed(disnake.ui.View):
     	if member:
     		try:
 
-    			embed = disnake.Embed(title="Application Status", color=disnake.Colour.blue())
+    			embed = disnake.Embed(title="Application Status - Ada SMP - ", color=disnake.Colour.blue())
 
     			embed.add_field(name=f"{member.name}, your application was denied", value="", inline=False)
 
