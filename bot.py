@@ -115,7 +115,10 @@ async def watcher():
 	        
 	        await channel.send(embed=embed, view=ResponseApplyEmbed(usernamedec))
 
-watcher.start()
+try:
+	watcher.start()
+except:
+	print("The entry data is corrupted.")
 
 @bot.event
 async def on_ready():
